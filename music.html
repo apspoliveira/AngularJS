@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+                <link rel="stylesheet" href="style.css">
+            </head>
+<form>
+  <div ng-app="myApp" ng-controller="MusicController">
+      <div class="header">
+          <h1>Music Details</h1>
+        </div>
+      <br>
+        <label>ID:</label>
+        <input type="text" ng-model="id">
+        <br>
+        <label>Album:</label>
+        <input type="text" ng-model="album">
+        <br>
+        <label>Artist:</label>
+        <input type="text" ng-model="artist">
+        <br>
+        <label>Track:</label>
+        <input type="text" ng-model="track">
+      </form>
+
+      <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('MusicController', function($scope, $http, $location, DataService) {
+          $http.get("http://localhost:8080/api/users/1/musics")
+          .then(function(response) {
+            $scope.musics = [];
+
+            angular.forEach(response.data, function(item) {
+              $scope.musics.push(item);
+              if(item.id == 1) {
+              $scope.id = item.id;
+            $scope.album = item.album;
+            $scope.artist = item.artist;
+            $scope.track = item.track;
+
+           $scope.id = $scope.music;
+              }
+            })
+          });
+        });
+      
+      </script>

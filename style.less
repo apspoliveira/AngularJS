@@ -1,0 +1,83 @@
+@color: #4CAF50;
+@background-color: aliceblue;
+@background-color2: beige;
+@color2: white;
+@border: #ccc;
+@color3: black;
+@background-color3: #f1f1f1;
+@color4: #000;
+
+html {
+    font-family: 'Arial';
+    word-spacing: 0.25em;
+    font-size: 14px;
+    background-color: @background-color;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  table {
+   border-collapse: initial;
+   width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  tr:nth-child(even) { background-color: @background-color2}
+  
+  th {
+    background-color: @color;
+    color:@color2;
+  }
+  
+  input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: -webkit-box;
+    border: 2px solid @border;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  
+  div {
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .header, .footer {
+    background-color: @color;
+    color: @color3;
+    padding: 15px;
+    opacity: 0.7;
+  }
+  
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: @background-color3;
+  }
+  
+  li {
+    display: inline;
+  }
+  
+  li a {
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  li a.active {
+    background-color: @color;
+    color: white;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
