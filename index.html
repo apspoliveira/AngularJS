@@ -10,6 +10,8 @@
 
 <link rel="stylesheet" href="style.css">
 
+<script src="controller.js"></script>
+
 </head>
 
 <body>
@@ -30,16 +32,16 @@
   <br>
 <table>
   <tr>
-    <th>Edit</th>
+    <th>View</th>
     <th>Artist</th>
   </tr>
   <tr ng-repeat="x in musics">
     <td>
-    <!--<button a href= "#music"> &#9998; Edit </button>-->
-    <p> <a href= "#music?{{x.id}}">Edit</a></p>
-    <div ng-view></div>
+    <div ng-init="myVar = 'music.html'"></div>
+    <p> <a ng-href= "{{myVar}}" data-ng-click="update(x.id, x.artist, x.album, x.track)">View</a></p>
     </td>
     <td>{{x.artist}}</td>
+    <td>{{DataService.id}}</td>
   </tr>
 </table>
 <br>
@@ -47,65 +49,7 @@
 <p> Music Web Application</p>
 </div>
 
-
-<script type = "text/ng-template" id = "index.html">
-  <h2> Music List </h2>
-  {{message}}
-</script>
-
-<!--<script type = "text/ng-template" id = "music.html">
-  <h2> Music Details </h2>
-  {{message}}
-</script>-->
 </div>
-
-<script>
-var app = angular.module('myApp', ['ngRoute']);
-
-app.factory('DataService', function () {
-  var music = {};
-
-  music.id = 1;
-
-  return music;
-});
-
-app.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.
-
-  when('/music', {
-    templateUrl: 'music.html',
-    controller: 'MusicController'
-  }).
-  when('/index', {
-    templateUrl: 'index.html',
-    controller: 'IndexController'
-  }).
-  otherwise({
-    redirectTo: '/music'
-  });
-}]);
-
-app.controller('MusicController', function($scope, $http, $location, DataService) {
-  $http.get("http://localhost:8080/api/users/1/musics")
-  .then(function(response) {
-    $scope.music = 21;
-    $scope.DataService = DataService;
-    $scope.musics = [];
-
-    angular.forEach(response.data, function(item){ 
-      $scope.musics.push(item);
-    })
-  });
-});
-
-app.controller('IndexController', function($scope, DataService) {
-  $scope.DataService = DataService;
-  $scope.message = "Index Controller Page";
-});
-
-</script>
-
 
 </body>
 </html>
