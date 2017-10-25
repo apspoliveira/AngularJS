@@ -7,16 +7,42 @@
 @background-color3: #f1f1f1;
 @color4: #000;
 
+@grid-columns: 12;
+@grid-gutter-width: 30px;
+@grid-float-breakpoint: 768px;
+
+@font: 'Helvetica';
+
+@-moz-document url-prefix( {
+  fieldset {display: table-cell;}
+}
+
+/* Extra small devices (767px and down) */
+@media (max-width: 767px) {
+  .row.vertical-align {
+    display: block; /* Turn off the flexible box layout */
+  }
+}
+
+/* Small devices (tablets, 768p and up) */
+@media (min-width: 768px) {
+  .row.vertical-align {
+    display: flex;
+    align-items: center;
+  }
+}
+
 html {
-    font-family: 'Arial';
+    font-family: @font;
     word-spacing: 0.25em;
     font-size: 14px;
+    font-weight: bold;
     background-color: @background-color;
     overflow-x: hidden;
     overflow-y: scroll;
   }
   
-  table {
+  /*table {
    border-collapse: initial;
    width: 100%;
   }
@@ -31,15 +57,15 @@ html {
   th {
     background-color: @color;
     color:@color2;
-  }
+  }*/
   
   input[type=text], select {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: -webkit-box;
-    border: 2px solid @border;
-    border-radius: 8px;
+    width: 100%;
+    padding: 22px 20px;
+    margin: 18px 0;
+    display: flex;
+    border: 12px solid @border;
+    border-radius: 18px;
     box-sizing: border-box;
   }
   
@@ -48,22 +74,31 @@ html {
     padding: 10px;
   }
   
-  .header, .footer {
+  .header {
     background-color: @color;
     color: @color3;
     padding: 15px;
     opacity: 0.7;
+    font-size: 18px;
+  }
+
+  .footer {
+    background-color: @color;
+    color: @color3;
+    padding: 15px;
+    opacity: 0.7;
+    font-size: 12px;
   }
   
   ul {
-      list-style-type: none;
+      list-style-type: armenian;
       margin: 0;
       padding: 0;
       background-color: @background-color3;
   }
   
   li {
-    display: inline;
+    display: -webkit-box;
   }
   
   li a {
@@ -81,3 +116,8 @@ html {
     background-color: #555;
     color: white;
   }
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}

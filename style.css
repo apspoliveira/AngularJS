@@ -1,27 +1,47 @@
+@-moz-document url-prefix( {
+  fieldset {
+    display: table-cell;
+  }
+}
+/* Extra small devices (767px and down) */
+@media (max-width: 767px) {
+  .row.vertical-align {
+    display: block;
+    /* Turn off the flexible box layout */
+  }
+}
+/* Small devices (tablets, 768p and up) */
+@media (min-width: 768px) {
+  .row.vertical-align {
+    display: flex;
+    align-items: center;
+  }
+}
 html {
-  font-family: 'Arial';
+  font-family: 'Calibri';
   word-spacing: 0.25em;
   font-size: 14px;
+  font-weight: bold;
   background-color: aliceblue;
   overflow-x: hidden;
   overflow-y: scroll;
 }
-table {
-  border-collapse: initial;
-  width: 100%;
-}
-th,
-td {
-  padding: 8px;
-  text-align: left;
-}
-tr:nth-child(even) {
-  background-color: beige;
-}
-th {
-  background-color: #4CAF50;
-  color: white;
-}
+/*table {
+   border-collapse: initial;
+   width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  tr:nth-child(even) { background-color: @background-color2}
+  
+  th {
+    background-color: @color;
+    color:@color2;
+  }*/
 input[type=text],
 select {
   width: 50%;
@@ -42,14 +62,15 @@ div {
   color: black;
   padding: 15px;
   opacity: 0.7;
+  font-size: 18px;
 }
 ul {
-  list-style-type: none;
+  list-style-type: upper-roman;
   margin: 0;
   padding: 0;
   background-color: #f1f1f1;
 }
-li {
+/*li {
   display: inline;
 }
 li a {
@@ -64,4 +85,8 @@ li a.active {
 li a:hover:not(.active) {
   background-color: #555;
   color: white;
+}*/
+.vertical-align {
+  display: flex;
+  flex-direction: row;
 }

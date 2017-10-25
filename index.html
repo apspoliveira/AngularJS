@@ -4,11 +4,16 @@
 <head>
 
 <title> Music Web Application</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 
 <script src="controller.js"></script>
 
@@ -16,40 +21,69 @@
 
 <body>
 
-<div ng-app="myApp" ng-controller="MusicController"> 
+<div class="container" ng-app="myApp" ng-controller="MusicController"> 
+<div class="row">
 
-    <ul>
-      <li><a class="active" href="#index">Home</a></li>
-      <li><a href="#login">Login</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
+    <div>
+      <div>
+          <div class="jumbotron table-responsive">
+              <h1>Music Web Application</h1>
+              <p>Responsive Web Page that presents the list of artists for each user</p>
+              <p>It uses a Rest API to obtain data</p>
+            </div>
+        </div>
+    </div>
+  </div>   
+
+  <ul class="nav">
+      <li class="nav-item"><a class="nav-link" href="#index"> Home <span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact"> Contact <span class="glyphicon glyphicon-user"></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#about"> About  <span class="glyphicon glyphicon-info-sign"></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#login"> Login <span class="glyphicon glyphicon-log-in"></span></a></li>
     </ul>
 <br>
-
-  <div class="header">
-    <h1>Music List</h1>
-  </div>
-  <br>
-<table>
-  <tr>
-    <th>View</th>
+  
+<table class="table table-border">
+  <thead class="thead-default">
+  <tr item-width="100">
+    <th>Click for Details</th>
     <th>Artist</th>
   </tr>
+</thead>
+<tbody>
+  <thead>
   <tr ng-repeat="x in musics">
     <td>
     <div ng-init="myVar = 'music.html'"></div>
-    <p> <a ng-href= "{{myVar}}" data-ng-click="update(x.id, x.artist, x.album, x.track)">View</a></p>
+    <p> <a class="btn btn-primary btn-sm" ng-href= "{{myVar}}" data-ng-click="update(x.id, x.artist, x.album, x.track)">Details</a></p>
     </td>
     <td>{{x.artist}}</td>
-    <td>{{DataService.id}}</td>
   </tr>
+</tbody>
 </table>
-<br>
-<div class="footer">
-<p> Music Web Application</p>
+
+
+<div class="close"> 
+  <hr>
+  <div class="footer">
+      <address>
+          Instituto Pedro Nunes<br>
+          Coimbra
+        <abbr title="Phone"></abbr> (351) 92 89 12 912
+        </address>
+        
+        <address>
+         Full Name<br>
+          <a href="mailto:#">luisabel@ipn.pt</a>
+        </address>
+
+    <p>IPN &copy; 2017</p>
+  </div>
+</div>
+</div>
 </div>
 
-</div>
+
 
 </body>
 </html>
